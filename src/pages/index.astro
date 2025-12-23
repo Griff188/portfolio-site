@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<main class="portfolio-grid">
+		<div class="photo-item">
+			<a href="/project1">
+				<div class="photo-slot" style="background-color: #f0f0f0;">
+					<span class="photo-text">Project 1</span>
+				</div>
+				<div class="hover-overlay">
+					<span>-view-</span>
+				</div>
+			</a>
+		</div>
+		<div class="photo-item">
+			<a href="/project2">
+				<div class="photo-slot" style="background-color: #e0e0e0;">
+					<span class="photo-text">Project 2</span>
+				</div>
+				<div class="hover-overlay">
+					<span>-view-</span>
+				</div>
+			</a>
+		</div>
+		<div class="photo-item">
+			<a href="/project3">
+				<div class="photo-slot" style="background-color: #d0d0d0;">
+					<span class="photo-text">Project 3</span>
+				</div>
+				<div class="hover-overlay">
+					<span>-view-</span>
+				</div>
+			</a>
+		</div>
+		<div class="photo-item">
+			<a href="/project4">
+				<div class="photo-slot" style="background-color: #c0c0c0;">
+					<span class="photo-text">Project 4</span>
+				</div>
+				<div class="hover-overlay">
+					<span>-view-</span>
+				</div>
+			</a>
+		</div>
+		<div class="photo-item">
+			<a href="/project5">
+				<div class="photo-slot" style="background-color: #b0b0b0;">
+					<span class="photo-text">Project 5</span>
+				</div>
+				<div class="hover-overlay">
+					<span>-view-</span>
+				</div>
+			</a>
+		</div>
+		<div class="photo-item">
+			<a href="/project6">
+				<div class="photo-slot" style="background-color: #a0a0a0;">
+					<span class="photo-text">Project 6</span>
+				</div>
+				<div class="hover-overlay">
+					<span>-view-</span>
+				</div>
+			</a>
+		</div>
+		<div class="photo-item">
+			<a href="/project7">
+				<div class="photo-slot" style="background-color: #909090;">
+					<span class="photo-text">Project 7</span>
+				</div>
+				<div class="hover-overlay">
+					<span>-view-</span>
+				</div>
+			</a>
+		</div>
+		<div class="photo-item">
+			<a href="/project8">
+				<div class="photo-slot" style="background-color: #808080;">
+					<span class="photo-text">Project 8</span>
+				</div>
+				<div class="hover-overlay">
+					<span>-view-</span>
+				</div>
+			</a>
+		</div>
+		<div class="photo-item">
+			<a href="/DanceConcert2022">
+				<div class="photo-slot" style="background-image: url('DanceConcert2022/562.jpg'); background-size: cover;">
+					<span class="photo-text">Dance Concert 2022 - Lighting Designer</span>
+				</div>
+				<div class="hover-overlay">
+					<span>-view-</span>
+				</div>
+			</a>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.portfolio-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+		max-width: 1200px;
+		margin: 2rem auto;
+		padding: 0 1rem;
+	}
+
+	.photo-item {
+		position: relative;
+		aspect-ratio: 1;
+		overflow: hidden;
+		border-radius: 8px;
+	}
+
+	.photo-item a {
+		display: block;
+		width: 100%;
+		height: 100%;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.photo-slot {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: flex-end;
+		justify-content: flex-start;
+		padding: 1rem;
+		box-sizing: border-box;
+		transition: opacity 0.3s;
+	}
+
+	.photo-text {
+		color: white;
+		font-weight: bold;
+		text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+	}
+
+	.hover-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.3s;
+		color: white;
+		font-size: 1.5rem;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.photo-item:hover .hover-overlay {
+		opacity: 1;
+	}
+
+	.photo-item:hover .photo-slot {
+		opacity: 0.3;
+	}
+</style>
