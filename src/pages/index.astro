@@ -206,4 +206,10 @@ import Layout from '../layouts/Layout.astro';
 	.photo-item:hover .photo-slot {
 		opacity: 0.3;
 	}
+
+	@media (max-width: 768px) {
+		.portfolio-grid {
+			grid-template-columns: 1fr;
+		}
+	}
 </style>
