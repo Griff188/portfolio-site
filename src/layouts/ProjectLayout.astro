@@ -16,7 +16,7 @@ const { title, role, description } = Astro.props;
 		
 		<div class="project-header">
 			<h1>{title}</h1>
-			<p><strong>Role:</strong> {role}<br /> {description}</p>
+			<p><strong> {role}<br /> {description}</p></strong>
 		</div>
 
 		<slot />
@@ -78,25 +78,29 @@ const { title, role, description } = Astro.props;
 			position: absolute;
 			top: 1rem;
 			left: 1rem;
-			color: #333;
+			/* color: #333; */
+			color: white;
 			text-decoration: none;
 			font-size: 1rem;
 			padding: 0.5rem 1rem;
 			border-radius: 4px;
-			background-color: #f9f9f9;
+			/* background-color: #f9f9f9; */
+			background-color: rgb(25, 28, 31);
 			transition: background-color 0.3s;
 			z-index: 10;
 		}
 
 		.back-button:hover {
-			background-color: #e9e9e9;
+			/* background-color: #e9e9e9; */
+			background-color: rgb(56, 62, 68);
 		}
 
 		/* space for title and description of show */
 		.project-header {
 			text-align: center;
 			margin-bottom: 2rem;
-			max-width: 600px;
+			/* max-width: 600px; */
+			max-width: auto;
 			margin-left: auto;
 			margin-right: auto;
 		}
@@ -208,7 +212,7 @@ const { title, role, description } = Astro.props;
 		}
 
 		/* 100% Image Width on Smaller Screens */
-		@media only screen and (max-width: 700px){
+		@media only screen and (max-width: 768px){
 			.modal-content {
 				width: 100%;
 			}
