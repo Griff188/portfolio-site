@@ -5,6 +5,9 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
 	<main>
 		<h1>Resume</h1>
+		<p>For further inquiries, please contact <a href="mailto:griffin.rabins@gmail.com">griffin.rabins@gmail.com</a></p>
+		
+		<p class="subtext">Click to view as PDFs</p>
 
 		<div class="button-container">
 			<a href="/pdfs/RabinsResume.pdf" class="res-button">General Resume</a>
@@ -17,13 +20,31 @@ import Layout from '../layouts/Layout.astro';
 </Layout>
 
 <style>
+	a {
+		color: white;
+	}
+
+	a:hover {
+		color: rgb(65, 68, 72);
+	}
+
 	h1 {
 		text-align: center;
 	}
 
+	p {
+		text-align: center;
+	}
+
+	.subtext {
+		font-size: 0.8rem;
+		margin-top: 5rem;
+		color: rgb(181, 187, 195);
+	}
+	
 	.res-button {
 		display: inline-block;
-		margin-top: 2rem;
+		margin-top: 1rem;
 		padding: 0.5rem 1rem;
 		background-color: rgb(45, 48, 52);
 		color: white;
@@ -34,12 +55,14 @@ import Layout from '../layouts/Layout.astro';
 
 	.res-button:hover {
 		background-color: rgb(65, 68, 72);
+		color: white;
 	}
+
 
 	.button-container {
 		display: flex;
 		justify-content: center;
-		gap: 1rem;
+		gap: 5rem;
 	}
 
 	@media (max-width: 768px) {

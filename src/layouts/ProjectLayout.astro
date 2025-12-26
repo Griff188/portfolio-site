@@ -5,9 +5,10 @@ export interface Props {
   title: string;
   role: string;
   description: string;
+  notes?: string;
 }
 
-const { title, role, description } = Astro.props;
+const { title, role, description, notes } = Astro.props;
 ---
 
 <Layout>
@@ -16,7 +17,7 @@ const { title, role, description } = Astro.props;
 		
 		<div class="project-header">
 			<h1>{title}</h1>
-			<p> <strong>Griffin Rabins: </strong>{role}<br /> {description}</p>
+			<p> <strong>Griffin Rabins: </strong>{role}<br /><strong>{description}</strong> <br/><br/><br/>{notes}</p>
 		</div>
 
 		<slot />

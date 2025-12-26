@@ -2,15 +2,221 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
-	<main>
-		<h1>Paperwork & Tools</h1>
+<Layout
+	<main class="project-page">
+		<div class="project-header">
+			<h1>Paperwork & Tools</h1>
+			<p>A small sample of paperwork and tools created for theater projects. Full documentation and further examples available on request.</p>
+			<h2>Paperwork</h2>
+		</div>
+		<div class="row"> 
+			<div class="column">
+				<img src="/pdfs/paperwork/HeathersRabins.png" style="width:100%">
+				<p>Plot created for lighting design of Heathers</p>
+			</div>
+			<div class="column">
+				<img src="/pdfs/paperwork/9to5Rabins.png" style="width:100%">
+				<p>Plot created for lighting design of 9 to 5</p>
+			</div> 
+			<div class="column">
+				<img src="/pdfs/paperwork/HurricaneDianeRabins.png" style="width:100%">
+				<p>Plot created for final project of CWRU lighting design course: Hurricane Diane</p>
+			</div> 
+			<div class="column">
+				<img src="/pdfs/paperwork/MagicSheetRabins.png" style="width:100%">
+				<p>Page 1 of magic sheet created for permanent rep plot of CSW Theatre Department</p>
+			</div> 
+		</div>
+		<div class="project-header">
+			<h2>Tools</h2>
+		</div>
+		<div class="row"> 
+			<div class="column">
+				<img src="/pdfs/paperwork/CalculatorRabins.png" style="width:100%">
+				<p>Calculator created to assist power and weight calculations for CWRU Footlighters</p>
+			</div>
+			<div class="column">
+			</div>
 	</main>
-    
+
+	<!-- Modal -->
+	<div id="myModal" class="modal">
+		<!-- Close button (X) -->
+		<span class="close">&times;</span>
+		<!-- Image inside each modal -->
+		<img class="modal-content" id="img01">
+	</div>
+
+	<script>
+		// modal container
+		var modal = document.getElementById("myModal") as HTMLElement;
+
+		// image inside modal container
+		var modalImg = document.getElementById("img01") as HTMLImageElement;
+
+		// close (X) button
+		var span = document.getElementsByClassName("close")[0] as HTMLElement;
+
+		// close modal when X button is clicked
+		span.addEventListener("click", function(event) { 
+			event.stopPropagation();
+			modal.style.display = "none";
+		});
+
+		// close modal when outside area is clicked
+		modal.addEventListener("click", function() {
+			modal.style.display = "none";
+		});
+
+		// disable modal close when image is clicked
+		modalImg.addEventListener("click", function(event) {
+			event.stopPropagation();
+		});
+
+		// get all images in .column containers
+		var images = document.querySelectorAll('.column img');
+
+		// add click listeners to each image
+		images.forEach(function(img) {
+			img.addEventListener("click", function(this: HTMLImageElement){
+				modal.style.display = "block";
+				modalImg.src = this.src;
+			});
+		});
+	</script>
 </Layout>
 
 <style>
-	h1 {
-		text-align: center;
+	.project-page {
+		position: relative;
+		padding-top: 3rem; /* Space for back button */
 	}
+
+	.project-header {
+		text-align: center;
+		margin-bottom: 2rem;
+		/* max-width: 600px; */
+		max-width: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.project-header h1 {
+		margin-bottom: 0.5rem;
+	}
+
+	* {
+		box-sizing: border-box;
+	}
+	
+
+	.header {
+		text-align: center;
+		padding: 32px;
+	}
+
+	#myImg {
+		border-radius: 5px;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+
+	#myImg:hover {opacity: 0.9;}
+
+	/* image grid: rows */
+	.row {
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		padding: 0 4px;
+	}
+
+	/* image grid: two columns */
+	.column {
+		-ms-flex: 50%;
+		flex: 50%;
+		padding: 0 4px;
+	}
+
+	/* image inside column */
+	.column img {
+		margin-top: 8px;
+		vertical-align: middle;
+		cursor: pointer;
+	}
+
+	/* modal background overlay */
+	.modal {
+		display: none; /* Hidden by default */
+		position: fixed; /* Stay in place */
+		z-index: 1000; /* Sit on top */
+		padding-top: 10px; /* Location of the box */
+		left: 0;
+		top: 0;
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		overflow: auto; /* Enable scroll if needed */
+		background-color: rgb(0,0,0); /* Fallback color */
+		background-color: rgba(0,0,0,0.95); /* Black w/ opacity */
+		cursor: pointer;
+	}
+
+	/* Modal Content (image) */
+	.modal-content {
+		margin: auto;
+		display: block;
+		width: 80%;
+		max-width: 1000px;
+		cursor: default;
+	}
+
+	/* zoom animation */
+	.modal-content {  
+		-webkit-animation-name: zoom;
+		-webkit-animation-duration: 0.1s;
+		animation-name: zoom;
+		animation-duration: 0.2s;
+	}
+
+	@-webkit-keyframes zoom {
+		from {-webkit-transform:scale(0)} 
+		to {-webkit-transform:scale(1)}
+	}
+
+	@keyframes zoom {
+		from {transform:scale(0)} 
+		to {transform:scale(1)}
+	}
+
+	/* close button */
+	.close {
+		position: absolute;
+		top: 15px;
+		right: 35px;
+		color: #f1f1f1;
+		font-size: 40px;
+		font-weight: bold;
+		transition: 0.3s;
+	}
+
+	.close:hover,
+	.close:focus {
+		color: #bbb;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	/* 100% Image Width on Smaller Screens */
+	@media only screen and (max-width: 768px){
+		.modal-content {
+			width: 100%;
+		}
+
+		.column {
+		-ms-flex: 100%;
+		flex: 100%;
+		}
+	}
+
 </style>
