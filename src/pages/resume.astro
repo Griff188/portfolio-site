@@ -5,7 +5,49 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
 	<main>
 		<h1>Resume</h1>
-		<p>My resume will be here (eventually)...</p>
+
+		<div class="button-container">
+			<a href="/pdfs/RabinsResume.pdf" class="res-button">General Resume</a>
+			<a href="/pdfs/RabinsTechResume.pdf" class="res-button">Technician Resume</a>
+		</div>
+		
+
 	</main>
     
 </Layout>
+
+<style>
+	h1 {
+		text-align: center;
+	}
+
+	.res-button {
+		display: inline-block;
+		margin-top: 2rem;
+		padding: 0.5rem 1rem;
+		background-color: rgb(45, 48, 52);
+		color: white;
+		text-decoration: none;
+		border-radius: 4px;
+		transition: background-color 0.3s;
+	}
+
+	.res-button:hover {
+		background-color: rgb(65, 68, 72);
+	}
+
+	.button-container {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	@media (max-width: 768px) {
+		.button-container {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
+
+</style>
