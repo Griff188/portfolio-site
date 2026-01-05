@@ -16,32 +16,74 @@ import Layout from '../layouts/Layout.astro';
         <div class="grid">
           <div class="field">
             <label>ETC Source 4 LED Series 2 (Lustr)</label>
-            <input type="number" id="itemA" value="0" min="0" />
+            <input 
+              type="number"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              id="itemA"
+              value="0"
+              min="0" 
+            />
           </div>
 
           <div class="field">
             <label>Chauvet Ovation E-910FC</label>
-            <input type="number" id="itemB" value="0" min="0" />
+            <input 
+              type="number"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              id="itemB"
+              value="0"
+              min="0" 
+            />
           </div>
 
           <div class="field">
             <label>ETC ColorSource PAR</label>
-            <input type="number" id="itemC" value="0" min="0" />
+            <input 
+              type="number"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              id="itemC"
+              value="0"
+              min="0" 
+            />
           </div>
 
           <div class="field">
             <label>Chauvet Rogue R3E Spot</label>
-            <input type="number" id="itemD" value="0" min="0" />
+            <input 
+              type="number"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              id="itemD"
+              value="0"
+              min="0" 
+            />
           </div>
 
           <div class="field">
             <label>Chauvet Rogue R2X Wash</label>
-            <input type="number" id="itemE" value="0" min="0" />
+            <input 
+              type="number"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              id="itemE"
+              value="0"
+              min="0" 
+            />
           </div>
 
           <div class="field">
             <label>Chauvet COLORado Batten 72X</label>
-            <input type="number" id="itemF" value="0" min="0" />
+            <input 
+              type="number"
+              inputmode="decimal"
+              pattern="[0-9]*"
+              id="itemF"
+              value="0"
+              min="0" 
+            />
           </div>
         </div>
 
@@ -170,7 +212,7 @@ import Layout from '../layouts/Layout.astro';
 .grid {
   display: grid;
   gap: 1.5rem;
-  column-gap: 2rem;
+  justify-items: center;
 }
 
 @media (min-width: 640px) {
@@ -186,6 +228,7 @@ import Layout from '../layouts/Layout.astro';
   font-size: 0.875rem;
   margin-bottom: 0.5rem;
   color: #d1d5db;
+  text-align: center;
 }
 
 .field input {
@@ -195,6 +238,9 @@ import Layout from '../layouts/Layout.astro';
   background: #374151;
   border: 1px solid #4b5563;
   color: white;
+  max-width: 240px;
+  margin: 0 auto;
+  font-size: 16px;
 }
 
 .field input:focus {
