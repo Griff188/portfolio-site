@@ -1,0 +1,268 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main class="page">
+    <div class="container">
+      <header class="header">
+        <h1>Lighting Calculator</h1>
+        <p>power and weight calculator made by Griffin</p>
+      </header>
+
+      <section class="card">
+
+        <!-- INPUTS -->
+        <div class="grid">
+          <div class="field">
+            <label>ETC Source 4 LED Series 2 (Lustr)</label>
+            <input type="number" id="itemA" value="0" min="0" />
+          </div>
+
+          <div class="field">
+            <label>Chauvet Ovation E-910FC</label>
+            <input type="number" id="itemB" value="0" min="0" />
+          </div>
+
+          <div class="field">
+            <label>ETC ColorSource PAR</label>
+            <input type="number" id="itemC" value="0" min="0" />
+          </div>
+
+          <div class="field">
+            <label>Chauvet Rogue R3E Spot</label>
+            <input type="number" id="itemD" value="0" min="0" />
+          </div>
+
+          <div class="field">
+            <label>Chauvet Rogue R2X Wash</label>
+            <input type="number" id="itemE" value="0" min="0" />
+          </div>
+
+          <div class="field">
+            <label>Chauvet COLORado Batten 72X</label>
+            <input type="number" id="itemF" value="0" min="0" />
+          </div>
+        </div>
+
+        <!-- CLEAR -->
+        <div class="actions">
+          <button id="clear-button">Clear All</button>
+        </div>
+
+        <hr />
+
+        <!-- RESULTS -->
+        <h2>Results</h2>
+
+        <div class="results">
+          <div class="result blue">
+            <span>Number of Fixtures</span>
+            <span id="result-number">0</span>
+          </div>
+
+          <div class="result green">
+            <span>Power (Amps) — 16A max per circuit</span>
+            <span id="result-power">0.00</span>
+          </div>
+
+          <div class="result purple">
+            <span>Weight (lbs)</span>
+            <span id="result-weight">0.00</span>
+          </div>
+
+          <div class="result yellow">
+            <span>Weight incl. pipe (lbs)</span>
+            <span id="result-pipe">0.00</span>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- JS -->
+  <script is:inline>
+    const ids = ['A','B','C','D','E','F'];
+    const inputs = Object.fromEntries(ids.map(i => [i, document.getElementById(`item${i}`)]));
+
+    const out = {
+      number: document.getElementById('result-number'),
+      power: document.getElementById('result-power'),
+      weight: document.getElementById('result-weight'),
+      pipe: document.getElementById('result-pipe')
+    };
+
+    function calculate() {
+      const v = Object.fromEntries(
+        Object.entries(inputs).map(([k, el]) => [k, parseFloat(el.value) || 0])
+      );
+
+      const number = Object.values(v).reduce((a,b) => a + b, 0);
+
+      const power =
+        v.A * 1.44 +
+        v.B * 1.88 +
+        v.C * 0.75 +
+        v.D * 4.54 +
+        v.E * 2.85 +
+        v.F * 1.33;
+
+      const weight =
+        v.A * 18.3 +
+        v.B * 19.8 +
+        v.C * 8.3 +
+        v.D * 34 +
+        v.E * 22.8 +
+        v.F * 18.6;
+
+      out.number.textContent = number;
+      out.power.textContent = power.toFixed(2);
+      out.weight.textContent = weight.toFixed(2);
+      out.pipe.textContent = (weight + 100).toFixed(2);
+    }
+
+    function clearAll() {
+      Object.values(inputs).forEach(i => i.value = 0);
+      calculate();
+    }
+
+    Object.values(inputs).forEach(i => i.addEventListener('input', calculate));
+    document.getElementById('clear-button').addEventListener('click', clearAll);
+
+    calculate();
+  </script>
+</Layout>
+
+<style>
+/* ---------- PAGE ---------- */
+
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.header p {
+  color: #9ca3af;
+  margin-top: 0.5rem;
+}
+
+/* ---------- CARD ---------- */
+.card {
+  background: #1f2933;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* ---------- INPUTS ---------- */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  column-gap: 2rem;
+}
+
+@media (min-width: 640px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.field label {
+  display: block;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  color: #d1d5db;
+}
+
+.field input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: #374151;
+  border: 1px solid #4b5563;
+  color: white;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+/* remove number arrows */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* ---------- ACTIONS ---------- */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #dc2626;
+}
+
+hr {
+  margin: 2rem 0;
+  border-color: #374151;
+}
+
+/* ---------- RESULTS ---------- */
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.results {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .results { grid-template-columns: repeat(2, 1fr); }
+}
+
+.result {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.blue   { background: rgba(30, 58, 138, 0.4); color: #bfdbfe; }
+.green  { background: rgba(20, 83, 45, 0.4); color: #bbf7d0; }
+.purple { background: rgba(88, 28, 135, 0.4); color: #e9d5ff; }
+.yellow { background: rgba(120, 53, 15, 0.4); color: #fde68a; }
+</style>
