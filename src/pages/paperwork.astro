@@ -31,7 +31,12 @@ import Layout from '../layouts/Layout.astro';
 		<div class="row"> 
 			<div class="column">
 				<img src="/pdfs/paperwork/CalculatorRabins.png" style="width:100%">
-				<p>Calculator created to assist power and weight calculations for CWRU Footlighters</p>
+				<p>Calculator created to assist power and weight calculations for CWRU Footlighters | 
+					<a href="/lightingcalculator" class="nav-button">
+						Accessible Here
+					</a>
+				</p>
+				
 			</div>
 			<div class="column">
 				<img src="/pdfs/paperwork/MagicSheetRabins.png" style="width:100%">
@@ -113,6 +118,15 @@ import Layout from '../layouts/Layout.astro';
 	.header {
 		text-align: center;
 		padding: 32px;
+	}
+
+	.nav-button {
+		color: coral;
+		transition: background-color 0.3s;
+	}
+
+	.nav-button:hover {
+		background-color: rgb(56, 62, 68);
 	}
 
 	#myImg {
