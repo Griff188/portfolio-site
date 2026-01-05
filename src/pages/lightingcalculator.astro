@@ -169,7 +169,14 @@ import Layout from '../layouts/Layout.astro';
       calculate();
     }
 
-    Object.values(inputs).forEach(i => i.addEventListener('input', calculate));
+    Object.values(inputs).forEach(input => {
+      input.addEventListener('input', calculate);
+
+      input.addEventListener('focus', e => e.target.select());
+      input.addEventListener('click', e => e.target.select());
+    });
+
+    
     document.getElementById('clear-button').addEventListener('click', clearAll);
 
     calculate();
