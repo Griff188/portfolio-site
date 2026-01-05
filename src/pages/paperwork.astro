@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
 	<main class="project-page">
 		<div class="project-header">
 			<h1>Paperwork & Tools</h1>
-			<p>A small sample of paperwork and tools created for theater projects. Full documentation and further examples available on request.</p>
+			<p>A small sample of paperwork and tools created for theater projects. Full documentation and further examples available on <a href="/resume">request</a>.</p>
 			<h2>Paperwork</h2>
 		</div>
 		<div class="row"> 
@@ -32,7 +32,7 @@ import Layout from '../layouts/Layout.astro';
 			<div class="column">
 				<img src="/pdfs/paperwork/CalculatorRabins.png" style="width:100%">
 				<p>Calculator created to assist power and weight calculations for CWRU Footlighters | 
-					<a href="/lightingcalculator" class="nav-button">
+					<a href="/lightingcalculator">
 						Accessible Here
 					</a>
 				</p>
@@ -120,12 +120,12 @@ import Layout from '../layouts/Layout.astro';
 		padding: 32px;
 	}
 
-	.nav-button {
+	a {
 		color: coral;
 		transition: background-color 0.3s;
 	}
 
-	.nav-button:hover {
+	a:hover {
 		background-color: rgb(56, 62, 68);
 	}
 
